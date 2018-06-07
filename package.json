@@ -1,0 +1,83 @@
+{
+    "name": "theme-by-language",
+    "displayName": "Theme by language",
+    "description": "Change the color theme based on the current file language",
+    "version": "1.0.0",
+    "publisher": "jsaulou",
+    "icon": "images/icon.png",
+    "galleryBanner": {
+        "color": "#e0e0e0",
+        "theme": "light"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jsaulou/vscode-theme-by-language.git"
+    },
+    "engines": {
+        "vscode": "^1.23.0"
+    },
+    "categories": [
+        "Other",
+        "Themes"
+    ],
+    "keywords": [
+        "theme",
+        "dynamic",
+        "file",
+        "type"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "theme-by-language.setThemeForCurrentFileLanguage",
+                "title": "Set theme for current file language"
+            },
+            {
+                "command": "theme-by-language.setDefaultTheme",
+                "title": "Set default theme"
+            },
+            {
+                "command": "theme-by-language.useDefaultThemeForCurrentFileLanguage",
+                "title": "Use the default theme for current file language"
+            },
+            {
+                "command": "theme-by-language.clearCustomThemesForFileLanguage",
+                "title": "Clear all registered custom themes for file languages"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "theme-by-language.setThemeForCurrentFileLanguage",
+                "key": "shift+alt+t"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Theme by language configuration",
+            "properties": {
+                "theme-by-language.themes": {
+                    "type": "object",
+                    "description": "Theme to use by language."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.7.2",
+        "vscode": "^1.1.6",
+        "tslint": "^5.8.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
