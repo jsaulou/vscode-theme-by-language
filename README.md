@@ -11,6 +11,10 @@ Check out the commands and configuration in the Extensions panel > Theme by lang
 
 > **Note**: If you have set a theme for a language, changing the color theme using the standard vscode menu will not work. To change the default theme, use the `Set default theme` command.
 
+## Preview
+
+![Preview](/images/preview.gif)
+
 ## How to use
 
 1. Install the extension
