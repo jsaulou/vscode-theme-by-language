@@ -2,7 +2,7 @@
     "name": "theme-by-language",
     "displayName": "Theme by language",
     "description": "Change the color theme based on the current file language",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "jsaulou",
     "icon": "images/icon.png",
     "galleryBanner": {
