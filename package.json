@@ -6,8 +6,8 @@
     "publisher": "jsaulou",
     "icon": "images/icon.png",
     "galleryBanner": {
-        "color": "#e0e0e0",
-        "theme": "light"
+        "color": "#ff9356",
+        "theme": "dark"
     },
     "repository": {
         "type": "git",
