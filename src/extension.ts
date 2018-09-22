@@ -9,6 +9,12 @@ import { applyCurrentEditorTheme, applyDefaultTheme } from './configuration';
 let timeout: NodeJS.Timer | undefined;
 
 export function activate(context: vscode.ExtensionContext) {
+    // Check active editor
+    if (vscode.window.activeTextEditor) {
+        applyCurrentEditorTheme();
+    }
+
+    // Listen for active editor changes
     const activeEditorDisposable = vscode.window.onDidChangeActiveTextEditor((e) => {
         if (timeout) {
             clearTimeout(timeout);
