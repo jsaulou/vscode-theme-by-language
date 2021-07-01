@@ -3,7 +3,7 @@
     "displayName": "Theme by language",
     "description": "Change the color theme based on the current file language",
     "version": "1.1.1",
-    "publisher": "jsaulou",
+    "publisher": "Voklen",
     "icon": "images/icon.png",
     "galleryBanner": {
         "color": "#ff9356",
@@ -11,7 +11,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/jsaulou/vscode-theme-by-language.git"
+        "url": "https://github.com/Voklen/vscode-theme-by-language.git"
     },
     "engines": {
         "vscode": "^1.23.0"
