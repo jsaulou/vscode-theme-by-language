@@ -65,7 +65,9 @@ export function applyLanguageTheme(language: string) {
 
 export function applyTheme(theme: string) {
     if (theme !== getWorkbenchTheme()) {
-        return vscode.workspace.getConfiguration().update(WORKBENCH_COLOR_THEME, theme, true);
+        const hasWorkspace = vscode.workspace.workspaceFolders !== undefined;
+        const configurationTarget = hasWorkspace ? vscode.ConfigurationTarget.Workspace : vscode.ConfigurationTarget.Global;
+        return vscode.workspace.getConfiguration().update(WORKBENCH_COLOR_THEME, theme, configurationTarget);
     }
 }
 

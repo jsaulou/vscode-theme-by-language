@@ -1,21 +1,39 @@
 # Change Log
 
-## [1.1.1]
+## [1.2.0] - 2021-07-10
 
-- Fixed: Theme changes to default when focusing on the Output panel ([#6](https://github.com/jsaulou/vscode-theme-by-language/issues/6))
+### Changed
 
-## [1.1.0]
+- Set `workbench.colorTheme` only for current workspace if one is opened ([#14](https://github.com/jsaulou/vscode-theme-by-language/issues/14))
 
-- Fixed: Custom theme is not applied when opening a file via command prompt or by shortcut. See [here](https://github.com/jsaulou/vscode-theme-by-language/issues/3).
+### Security
 
-## [1.0.2]
+- Updated `vscode.engine` to a more recent version `1.52.0` to fix dependencies security issues.
 
-- Changed: Improved README
+## [1.1.1] - 2018-10-20
 
-## [1.0.1]
+### Fixed
 
-- Added: Preview in README
+- Theme changes to default when focusing on the Output panel ([#6](https://github.com/jsaulou/vscode-theme-by-language/issues/6))
 
-## [1.0.0]
+## [1.1.0] - 2018-09-22
+
+### Fixed
+
+- Custom theme is not applied when opening a file via command prompt or by shortcut. See [here](https://github.com/jsaulou/vscode-theme-by-language/issues/3).
+
+## [1.0.2] - 2018-06-14
+
+### Changed
+
+- Improved README
+
+## [1.0.1] - 2018-06-09
+
+### Added
+
+- Preview in README
+
+## [1.0.0] - 2018-06-07
 
 - Initial release
