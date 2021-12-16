@@ -1,8 +1,17 @@
 import * as vscode from 'vscode';
 
 const THEMES_PARAMETER_NAME = "theme-by-language.themes";
+const CONFIG_TARGET_PARAMETER_NAME = "theme-by-language.useGlobalConfigOnly";
 const DEFAULT_THEME_LANGUAGE = "*";
 const WORKBENCH_COLOR_THEME = "workbench.colorTheme";
+
+/** Where to save `workbench.colorTheme` configuration */
+function getConfigurationTarget(): vscode.ConfigurationTarget {
+    let globalScope = vscode.workspace.workspaceFolders === undefined ||
+        vscode.workspace.getConfiguration().has(CONFIG_TARGET_PARAMETER_NAME) &&
+        vscode.workspace.getConfiguration().get<boolean>(CONFIG_TARGET_PARAMETER_NAME);
+    return globalScope ? vscode.ConfigurationTarget.Global : vscode.ConfigurationTarget.Workspace;
+}
 
 export function hasThemeConfiguration() {
     return vscode.workspace.getConfiguration().has(THEMES_PARAMETER_NAME);
@@ -65,8 +74,7 @@ export function applyLanguageTheme(language: string) {
 
 export function applyTheme(theme: string) {
     if (theme !== getWorkbenchTheme()) {
-        const hasWorkspace = vscode.workspace.workspaceFolders !== undefined;
-        const configurationTarget = hasWorkspace ? vscode.ConfigurationTarget.Workspace : vscode.ConfigurationTarget.Global;
+        const configurationTarget = getConfigurationTarget();
         return vscode.workspace.getConfiguration().update(WORKBENCH_COLOR_THEME, theme, configurationTarget);
     }
 }
