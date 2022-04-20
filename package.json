@@ -2,7 +2,7 @@
     "name": "theme-by-language",
     "displayName": "Theme by language",
     "description": "Change the color theme based on the current file language",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "publisher": "jsaulou",
     "icon": "images/icon.png",
     "galleryBanner": {
@@ -66,7 +66,7 @@
                     "type": "object",
                     "description": "Theme to use by language."
                 },
-				"theme-by-language.useGlobalConfigOnly": {
+                "theme-by-language.useGlobalConfigOnly": {
                     "type": "boolean",
                     "description": "Use only global configuration file to store current theme."
                 }
