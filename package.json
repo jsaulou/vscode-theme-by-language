@@ -62,6 +62,10 @@
                 "theme-by-language.themes": {
                     "type": "object",
                     "description": "Theme to use by language."
+                },
+				"theme-by-language.useGlobalConfigOnly": {
+                    "type": "boolean",
+                    "description": "Use only global configuration file to store current theme."
                 }
             }
         }
