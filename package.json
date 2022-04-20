@@ -9,6 +9,9 @@
         "color": "#ff9356",
         "theme": "dark"
     },
+    "extensionKind": [
+        "ui"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/jsaulou/vscode-theme-by-language.git"
