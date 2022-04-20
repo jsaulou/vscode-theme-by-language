@@ -1,5 +1,16 @@
 # Change Log
 
+## [1.2.1] - 2022-04-20
+
+### Added
+
+- Ability to update global settings, not workspace. Thanks @DifficultNick. (#18)
+- Support for vscode with Docker container (#9)
+
+### Security
+
+- Updated dependencies
+
 ## [1.2.0] - 2021-07-10
 
 ### Changed
