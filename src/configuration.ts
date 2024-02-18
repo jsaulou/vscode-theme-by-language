@@ -4,6 +4,7 @@ const THEMES_PARAMETER_NAME = "theme-by-language.themes";
 const CONFIG_TARGET_PARAMETER_NAME = "theme-by-language.useGlobalConfigOnly";
 const DEFAULT_THEME_LANGUAGE = "*";
 const WORKBENCH_COLOR_THEME = "workbench.colorTheme";
+const CONFIG_FILENAME_PREFIX = "filename:";
 
 /** Where to save `workbench.colorTheme` configuration */
 function getConfigurationTarget(): vscode.ConfigurationTarget {
@@ -21,13 +22,31 @@ export function getThemeConfiguration(): any {
     return vscode.workspace.getConfiguration().get(THEMES_PARAMETER_NAME);
 }
 
-export function getTheme(language: string): string | undefined {
+export function getTheme(language: string, filename: string): string | undefined {
     const conf = getThemeConfiguration();
+    return getThemeForFilename(conf, filename) || getThemeForLanguage(conf, language);
+}
+
+function getThemeForFilename(conf: any, filename: string): string | undefined {
+    for (const k in conf) {
+        if (k.startsWith(CONFIG_FILENAME_PREFIX)) {
+            const v: string = conf[k];
+            const filenameRegex = k.substring(CONFIG_FILENAME_PREFIX.length);
+            if (filenameRegex && new RegExp(filenameRegex).test(filename)) {
+                return v;
+            }
+        }
+    }
+    return undefined;
+}
+
+function getThemeForLanguage(conf: any, language: string): string | undefined {
     return conf ? conf[language] : undefined;
 }
 
 export function getDefaultTheme() {
-    return getTheme(DEFAULT_THEME_LANGUAGE);
+    const conf = getThemeConfiguration();
+    return getThemeForLanguage(conf, DEFAULT_THEME_LANGUAGE);
 }
 
 export function setDefaultTheme(theme: string) {
@@ -62,11 +81,7 @@ export function getWorkbenchTheme(): any {
 }
 
 export function applyDefaultTheme() {
-    return applyLanguageTheme(DEFAULT_THEME_LANGUAGE);
-}
-
-export function applyLanguageTheme(language: string) {
-    let theme = getTheme(language) || getDefaultTheme();
+    const theme = getDefaultTheme();
     if (theme) {
         return applyTheme(theme);
     }
@@ -81,11 +96,16 @@ export function applyTheme(theme: string) {
 
 export function applyCurrentEditorTheme() {
     const editor = vscode.window.activeTextEditor;
+    const conf = getThemeConfiguration();
     if (editor) {
-        return applyLanguageTheme(editor.document.languageId);
-    } else {
-        return applyDefaultTheme();
+        const document = editor.document;
+        const theme = getThemeForFilename(conf, document.fileName) || getThemeForLanguage(conf, document.languageId);
+        if (theme) {
+            return applyTheme(theme);
+        }
     }
+
+    return applyDefaultTheme();
 }
 
 export function listThemes(): string[] {

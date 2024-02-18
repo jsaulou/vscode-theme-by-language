@@ -12,7 +12,7 @@ If you prefer, like me, to edit Markdown and AsciiDoc files using a dark theme b
 
 ## How to use
 
-> **Important**: If you have set a theme for a language, changing the color theme using the standard vscode menu **will not work**. To change the default theme, use the `Set default theme` command.
+> **Important**: If you have set a theme for a language, changing the color theme using the standard `vscode` menu **will not work**. To change the default theme, use the `Set default theme` command.
 
 ### Set default theme fallback
 
@@ -29,10 +29,31 @@ To revert to the default theme for the current file language, use the command `U
 
 To unregister all custom themes, use the command `Clear all registered custom themes for file languages`.
 
+### Set a theme based on filename
+
+> **IMPORTANT**: Entries starting with `filename:` take precedence over other entries.
+
+> **NOTE** There is no UI to do this. You will need to edit your `settings.json` manually.
+
+To set a theme based on the filename, open your `settings.json` and add an entry to your `theme-by-language.themes` configuration entry.
+The key must be of the following format: `filename:<filename regex>`.
+
+Example:
+
+```json
+"theme-by-language.themes": {
+  "*": "Minone",
+  "markdown": "Visual Studio Dark",
+  "python": "Default Dark+",
+  "filename:.*\\.ipynb": "<theme name>",
+  "filename:.*\\.drawio": "<theme name>",
+}
+```
+
 ## Limitations
 
 - Changing the language manually for the current file will not automatically change the theme. You will need to switch editors.
-- Does not work well when switching between multiple instances of vscode
+- Does not work well when switching between multiple instances of `vscode`.
 
 Special thanks to [@MrDoomy](https://github.com/MrDoomy) for creating the logo!
 
