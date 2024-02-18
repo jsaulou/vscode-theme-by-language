@@ -1,5 +1,15 @@
 # Change Log
 
+## [1.3.0] - 2024-02-18
+
+### Added
+
+- Allow to set theme based on filename (#24, #8, #15, #20, #21)
+
+### Security
+
+- Updated dependencies
+
 ## [1.2.1] - 2022-04-20
 
 ### Added
